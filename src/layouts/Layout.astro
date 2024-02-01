@@ -1,0 +1,36 @@
+---
+interface Props {
+	title: string;
+}
+import NavBar from './NavBar.vue';
+import { ViewTransitions } from 'astro:transitions';
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions />
+	</head>
+	<body>
+		<NavBar client:only  />
+		<slot />
+	</body>
+</html>
+<style is:global>
+	*{
+		box-sizing: border-box;
+		position: relative;
+		min-width: 0;
+	}
+	html{
+		@apply bg-gradient-to-b from-teal-200/10 to-teal-500/30;
+		min-height: 100dvh ;
+	}
+</style>
